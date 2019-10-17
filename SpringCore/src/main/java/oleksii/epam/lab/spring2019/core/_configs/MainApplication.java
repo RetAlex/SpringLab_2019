@@ -10,6 +10,7 @@ import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DefaultDataBufferFactory;
@@ -23,6 +24,7 @@ import org.springframework.validation.Validator;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
+@PropertySource("classpath:application.properties")
 @ComponentScan({"oleksii.epam.lab.spring2019.core.beans", "oleksii.epam.lab.spring2019.core.validation"})
 public class MainApplication {
     public static void main(String[] args) throws IOException {
@@ -73,7 +75,7 @@ public class MainApplication {
         }catch (IOException e){
             System.out.printf("Inside catch block for not existing resource: [%s] %s\n", e.getClass(), e.getMessage());
         }
-        Resource resource = context.getResource("classpath:Resource01.txt");
+        Resource resource = context.getResource("classpath:folder1/Resource01.txt");
         ByteBuffer content = ByteBuffer.allocate((int)resource.contentLength());
         resource.readableChannel().read(content);
         System.out.println("Valid resource exists: "+resource.exists());
@@ -138,7 +140,7 @@ public class MainApplication {
         System.out.println("Read bytes in wave #1: "+new String(readBytes));
 
         buffer.write("56789".getBytes());
-        readBytes = new byte[10];
+        readBytes = new byte[7];
         buffer.read(readBytes, 0, 7);
         System.out.println("Read bytes in wave #2: " + new String(readBytes));
     }

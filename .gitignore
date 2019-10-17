@@ -3,5 +3,6 @@ out/
 .idea/
 temp/
 lib/
+.DS_Store
 
 *.iml

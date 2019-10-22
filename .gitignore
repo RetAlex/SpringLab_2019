@@ -4,5 +4,7 @@ out/
 temp/
 lib/
 .DS_Store
+.mvn/
 
+mvnw*
 *.iml

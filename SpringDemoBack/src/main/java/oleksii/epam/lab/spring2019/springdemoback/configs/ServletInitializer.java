@@ -1,4 +1,4 @@
-package oleksii.epam.lab.spring2019.springdemoback;
+package oleksii.epam.lab.spring2019.springdemoback.configs;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

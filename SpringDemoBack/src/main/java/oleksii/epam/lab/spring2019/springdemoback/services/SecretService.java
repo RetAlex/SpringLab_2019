@@ -18,6 +18,7 @@ public class SecretService {
 
     public Secret getSecret(String username){
         var one = secretRepository.findById(username);
+        if (one.isEmpty()) throw new NotFounSecretException();
         return one.get();
     }
 }
